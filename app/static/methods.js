@@ -8,7 +8,7 @@ module.exports = {
                 break;
             case "carlsjr":
                 return require("../images/carlsjrIcon.png");
-            case "chipotle":
+            case "chipotlemexicangrill":
                 return require("../images/chipotleIcon.png");
             case "jackinthebox":
                 return require("../images/jackintheboxIcon.png");
@@ -17,11 +17,14 @@ module.exports = {
             case "pandaexpress":
                 return require("../images/pandaexpressIcon.png");
             case "macdonalds":
+            case "mcdonalds":
                 return require("../images/macdonaldsIcon.png");
             case "subway":
                 return require("../images/subwayIcon.png");
             case "superduperburger":
                 return require("../images/superduperburgerIcon.png");
+            case "tacobell":
+                return require("../images/tacobellIcon.png");
             default:
                 return require("../images/defaultIcon.png");
         }

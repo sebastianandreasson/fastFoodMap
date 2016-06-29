@@ -3,7 +3,6 @@ import { MapView, StyleSheet } from 'react-native';
 
 class ViewContainer extends Component {
     render() {
-        console.log(this.props.moveLocation);
         return (
             <MapView
              style={styles.map}
@@ -15,7 +14,6 @@ class ViewContainer extends Component {
         )
     }
     componentWillReceiveProps() {
-        console.log("MAP componentWillReceiveProps");
     }
     _onRegionChange(e) {
         // console.log(e)
@@ -24,11 +22,11 @@ class ViewContainer extends Component {
 
 const styles = StyleSheet.create({
     map: {
-        height: 200,
-        borderWidth: 1,
-        borderLeftWidth: 0,
-        borderRightWidth: 0,
-        borderColor: '#000000',
+        height: 300,
+        borderBottomWidth: 1,
+        borderTopWidth: 1,
+        borderColor: "rgba(0, 0, 0, 0.1)",
+        // borderColor: '#000000',
     },
 });
 

@@ -29,23 +29,29 @@ class MapScreen extends Component {
                 longitudeDelta: 0.01,
             },
             places: [],
-            // annotations: [
-            //     {
-            //         latitude: 37.78552685649934,
-            //         longitude: -122.4055764581556,
-            //         title: "MICKY DEE",
-            //         animateDrop: true,
-            //     }
-            // ],
             annotations: [],
         }
     }
     componentWillMount() {
     }
     componentDidMount() {
+        this._getCurrentPosition();
+    }
+    render() {
+        const navigator = this.props.navigator;
+        return (
+            <ViewContainer>
+                <ViewContainer>
+                    <Map annotations={this.state.annotations} moveLocation={this.state.moveLocation} />
+                    <TableView places={this.state.places} onCellPress={this._onCellPress.bind(this)} onRefresh={this._getCurrentPosition.bind(this)}/>
+                </ViewContainer>
+            </ViewContainer>
+        )
+    }
+    _getCurrentPosition(callback) {
         navigator.geolocation.getCurrentPosition(
             (position) => {
-                this._fetchPlaces(position);
+                this._fetchPlaces(position, callback);
             },
             (error) => {
                 this._fetchPlaces({
@@ -53,24 +59,11 @@ class MapScreen extends Component {
                         latitude: 37.78552685649934,
                         longitude: -122.4055764581556,
                     },
-                });
-                alert(error.message);
+                }, callback);
+                console.warn(error.message);
             },
             {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
         );
-    }
-    render() {
-        console.log(this.state.moveLocation);
-        const navigator = this.props.navigator;
-        return (
-            <ViewContainer>
-                <Navbar title={"FASTFOODMAP"} />
-                <ScrollViewContainer>
-                    <Map annotations={this.state.annotations} moveLocation={this.state.moveLocation} />
-                    <TableView places={this.state.places} onCellPress={this._onCellPress.bind(this)}/>
-                </ScrollViewContainer>
-            </ViewContainer>
-        )
     }
     _onCellPress(place) {
         const moveLocation = {
@@ -81,22 +74,20 @@ class MapScreen extends Component {
         };
         this.setState({ moveLocation });
     }
-    _fetchPlaces(position) {
-        console.log("fetchPlaces");
+    _fetchPlaces(position, callback) {
         const baseURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
         fetch(`${baseURL}?location=${position.coords.latitude},${position.coords.longitude}&rankby=distance&type=restaurant&keyword=${keyword}&key=${gaKey}`)
         .then((response) => response.json())
         .then((response) => {
             console.log("got response, update");
             console.log(response);
-            this._updatePlaces(position, response.results);
+            this._updatePlaces(position, response.results, callback);
         })
         .catch((error) => {
             console.log(error);
         });
     }
-    _updatePlaces(position, places) {
-        console.log("updatePlaces!");
+    _updatePlaces(position, places, callback) {
         this.setState({
             initialPosition: position,
             places: places.map((place) => {
@@ -117,6 +108,7 @@ class MapScreen extends Component {
                 };
             }),
         });
+        if (callback) callback();
     }
 }
 

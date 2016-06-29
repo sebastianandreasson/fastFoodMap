@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, ListView, StyleSheet, View, Text, Image } from 'react-native';
+import { RefreshControl, ListView, StyleSheet } from 'react-native';
 import geolib from "geolib";
 import Cell from "./Cell";
 
@@ -9,31 +9,38 @@ class TableView extends Component {
         var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
         this.state = {
             dataSource: ds.cloneWithRows(props.places),
+            refreshing: false,
         }
     }
-    render() {
-        console.log(this.state.dataSource);
-        return (
-            <ListView
-                style={styles.listView}
-                dataSource={this.state.dataSource}
-                renderRow={(place) => <Cell onPress={this.props.onCellPress} place={place} /> }
-            />
-        )
-    }
     componentWillReceiveProps(props) {
-        console.log(props);
         var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
         this.setState({
             dataSource: ds.cloneWithRows(props.places),
         });
-        console.log("TABLEVIEW componentWillReceiveProps");
+    }
+    render() {
+        return (
+            <ListView
+                style={styles.listView}
+                dataSource={this.state.dataSource}
+                renderRow={(place) => <Cell onPress={this.props.onCellPress} place={place} />}
+                refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh.bind(this)} />}
+            />
+        )
+    }
+    _onRefresh() {
+        this.setState({refreshing: true});
+        this.props.onRefresh(() => {
+            this.setState({ refreshing: false });
+        });
     }
 }
 
 const styles = StyleSheet.create({
     listView: {
-        marginTop: 20,
+        marginTop: 0,
+        borderTopWidth: 1,
+        borderColor: "rgba(0, 0, 0, 0.1)",
     },
     listItem: {
         flexDirection: "row",
