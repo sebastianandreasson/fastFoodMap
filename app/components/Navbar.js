@@ -6,14 +6,12 @@ import StatusbarBackground from "./StatusbarBackground";
 class Navbar extends Component {
     render () {
         return (
-            <ViewContainer style={{ height: 60 }}>
+            <View style={[styles.navbar, this.props.style || {}]}>
                 <StatusbarBackground />
-                <View style={[styles.navbar, this.props.style || {}]}>
-                    <Text style={styles.navbarTitle}>
-                        {this.props.title}
-                    </Text>
-                </View>
-            </ViewContainer>
+                <Text style={styles.navbarTitle}>
+                    {this.props.title}
+                </Text>
+            </View>
         )
     }
 }
@@ -21,7 +19,7 @@ class Navbar extends Component {
 const styles = StyleSheet.create({
 
     navbar: {
-        height: 40,
+        height: 60,
         backgroundColor: "orange",
         flexDirection: "column",
         justifyContent: "center",

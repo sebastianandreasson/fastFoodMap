@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, ListView, StyleSheet, View, Text, Image } from 'react-native';
 import geolib from "geolib";
+import Cell from "./Cell";
 
 class TableView extends Component {
     constructor(props) {
@@ -11,24 +12,22 @@ class TableView extends Component {
         }
     }
     render() {
+        console.log(this.state.dataSource);
         return (
             <ListView
                 style={styles.listView}
                 dataSource={this.state.dataSource}
-                renderRow={(object) => this._renderRow(object) }
+                renderRow={(place) => <Cell onPress={this.props.onCellPress} place={place} /> }
             />
         )
     }
-    _renderRow(place) {
-        return (
-            <TouchableOpacity style={styles.listItem} onPress={this.props.onCellPress.bind(this, place)}>
-                <Image style={styles.listItemImage} source={require('../images/mcdonaldsIcon.png')} />
-                <View style={styles.listItemTextWrapper}>
-                    <Text style={styles.listItemTitle}>{place.name} - {place.vicinity}</Text>
-                    <Text style={styles.listItemSubTitle}>{place.distance}m away</Text>
-                </View>
-            </TouchableOpacity>
-        )
+    componentWillReceiveProps(props) {
+        console.log(props);
+        var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+        this.setState({
+            dataSource: ds.cloneWithRows(props.places),
+        });
+        console.log("TABLEVIEW componentWillReceiveProps");
     }
 }
 
