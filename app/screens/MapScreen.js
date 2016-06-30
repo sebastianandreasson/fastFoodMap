@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { AdMobBanner } from 'react-native-admob'
 import { imageForName } from "../static/methods";
 
 import ViewContainer from "../components/ViewContainer";
@@ -45,8 +46,16 @@ class MapScreen extends Component {
                     <Map annotations={this.state.annotations} moveLocation={this.state.moveLocation} />
                     <TableView places={this.state.places} onCellPress={this._onCellPress.bind(this)} onRefresh={this._getCurrentPosition.bind(this)}/>
                 </ViewContainer>
+                <AdMobBanner
+                  bannerSize="smartBannerPortrait"
+                  adUnitID="ca-app-pub-4581009299904143/7241017310"
+                  testDeviveID="EMULATOR"
+                  didFailToReceiveAdWithError={this._bannerError} />
             </ViewContainer>
         )
+    }
+    _bannerError(err){
+        console.warn(err);
     }
     _getCurrentPosition(callback) {
         navigator.geolocation.getCurrentPosition(
@@ -100,8 +109,10 @@ class MapScreen extends Component {
             }),
             annotations: places.map((place) => {
                 return {
-                    longitude: place.geometry.location.lng,
-                    latitude: place.geometry.location.lat,
+                    coordinate: {
+                        longitude: place.geometry.location.lng,
+                        latitude: place.geometry.location.lat,
+                    },
                     title: place.name,
                     animateDrop: true,
                     image: imageForName(place.name),
