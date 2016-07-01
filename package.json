@@ -10,6 +10,7 @@
     "react": "15.1.0",
     "react-native": "^0.28.0",
     "react-native-admob": "^1.1.2",
+    "react-native-code-push": "^1.13.1-beta",
     "react-native-maps": "github:skellock/react-native-maps#friends-with-28"
   }
 }

@@ -1,6 +1,9 @@
 package com.fastfoodmap;
 
 import com.facebook.react.ReactActivity;
+import com.microsoft.codepush.react.CodePush;
+import com.sbugert.rnadmob.RNAdMobPackage;
+import com.airbnb.android.react.maps.MapsPackage;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 
@@ -34,7 +37,10 @@ public class MainActivity extends ReactActivity {
     @Override
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
-            new MainReactPackage()
+            new MainReactPackage(),
+            new CodePush(this.getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), this, BuildConfig.DEBUG),
+            new RNAdMobPackage(),
+            new MapsPackage(this)
         );
     }
 }
