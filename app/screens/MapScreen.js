@@ -38,22 +38,6 @@ class MapScreen extends Component {
     componentDidMount() {
         this._getCurrentPosition();
     }
-    render() {
-        const navigator = this.props.navigator;
-        return (
-            <ViewContainer>
-                <ViewContainer>
-                    <Map annotations={this.state.annotations} moveLocation={this.state.moveLocation} />
-                    <TableView places={this.state.places} onCellPress={this._onCellPress.bind(this)} onRefresh={this._getCurrentPosition.bind(this)}/>
-                </ViewContainer>
-                <AdMobBanner
-                  bannerSize="smartBannerPortrait"
-                  adUnitID="ca-app-pub-4581009299904143/7241017310"
-                  testDeviveID="EMULATOR"
-                  didFailToReceiveAdWithError={this._bannerError} />
-            </ViewContainer>
-        )
-    }
     _bannerError(err){
         console.warn(err);
     }
@@ -69,6 +53,7 @@ class MapScreen extends Component {
                         longitude: -122.4055764581556,
                     },
                 }, callback);
+                alert("unable to get location, check app permissions in settings.");
                 console.warn(error.message);
             },
             {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
@@ -99,6 +84,11 @@ class MapScreen extends Component {
     _updatePlaces(position, places, callback) {
         this.setState({
             initialPosition: position,
+            moveLocation: {
+                ...position.coords,
+                latitudeDelta: 0.01,
+                longitudeDelta: 0.01,
+            },
             places: places.map((place) => {
                 place.distance = geolib.getDistance(position.coords,
                 {
@@ -120,6 +110,22 @@ class MapScreen extends Component {
             }),
         });
         if (callback) callback();
+    }
+    render() {
+        const navigator = this.props.navigator;
+        return (
+            <ViewContainer>
+                <ViewContainer>
+                    <Map annotations={this.state.annotations} moveLocation={this.state.moveLocation} />
+                    <TableView places={this.state.places} onCellPress={this._onCellPress.bind(this)} onRefresh={this._getCurrentPosition.bind(this)}/>
+                </ViewContainer>
+                <AdMobBanner
+                  bannerSize="smartBannerPortrait"
+                  adUnitID="ca-app-pub-4581009299904143/7241017310"
+                  testDeviveID="EMULATOR"
+                  didFailToReceiveAdWithError={this._bannerError} />
+            </ViewContainer>
+        )
     }
 }
 

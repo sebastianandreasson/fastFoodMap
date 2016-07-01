@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -23,10 +24,10 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		452ADCD51D25C33F001E65CB /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452ADCD41D25C33F001E65CB /* GoogleMobileAds.framework */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		C9A69B6FA25E45248EB6BCA2 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8C54C4AAA9542B998954B66 /* libAirMaps.a */; };
-		EF8FB9A086B04DC3BC887404 /* libRNAdMobManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1305AB785D24C21AE345A65 /* libRNAdMobManager.a */; };
 		A591C775E5154EE2958056FA /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBBD847AB8E643BF811EA121 /* libCodePush.a */; };
+		C9A69B6FA25E45248EB6BCA2 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8C54C4AAA9542B998954B66 /* libAirMaps.a */; };
 		E472A537A30A48C2AE2A9083 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EFE4EFD91CE49348E5BB6A6 /* libz.tbd */; };
+		EF8FB9A086B04DC3BC887404 /* libRNAdMobManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1305AB785D24C21AE345A65 /* libRNAdMobManager.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,13 @@
 			remoteGlobalIDString = A96DA7741C146D7200FC639B;
 			remoteInfo = RNAdMobManager;
 		};
+		454BE29F1D269B6E00E07AFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D845564130F54529B24487C7 /* CodePush.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = CodePush;
+		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -146,13 +154,13 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		452ADCD41D25C33F001E65CB /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		7EFE4EFD91CE49348E5BB6A6 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		B1305AB785D24C21AE345A65 /* libRNAdMobManager.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNAdMobManager.a; sourceTree = "<group>"; };
 		BD8AC264EDED4C51A9540970 /* RNAdMobManager.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNAdMobManager.xcodeproj; path = "../node_modules/react-native-admob/ios/RNAdMobManager.xcodeproj"; sourceTree = "<group>"; };
+		D845564130F54529B24487C7 /* CodePush.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		E8C54C4AAA9542B998954B66 /* libAirMaps.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAirMaps.a; sourceTree = "<group>"; };
-		D845564130F54529B24487C7 /* CodePush.xcodeproj */ = {isa = PBXFileReference; name = "CodePush.xcodeproj"; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		EBBD847AB8E643BF811EA121 /* libCodePush.a */ = {isa = PBXFileReference; name = "libCodePush.a"; path = "libCodePush.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		7EFE4EFD91CE49348E5BB6A6 /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
+		EBBD847AB8E643BF811EA121 /* libCodePush.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libCodePush.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +292,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1B4E036937CC4C92924FF882 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7EFE4EFD91CE49348E5BB6A6 /* libz.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		452ADCBE1D25C14E001E65CB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +312,14 @@
 			isa = PBXGroup;
 			children = (
 				452ADCD11D25C14F001E65CB /* libRNAdMobManager.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		454BE29B1D269B6E00E07AFE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				454BE2A01D269B6E00E07AFE /* libCodePush.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -357,15 +381,6 @@
 				00E356EE1AD99517003FC87E /* fastFoodMapTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		1B4E036937CC4C92924FF882 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7EFE4EFD91CE49348E5BB6A6 /* libz.tbd */,
-			);
-			name = Frameworks;
-			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,6 +455,10 @@
 				{
 					ProductGroup = 452ADCBE1D25C14E001E65CB /* Products */;
 					ProjectRef = 05A7814CD8A84B7787570DD7 /* AirMaps.xcodeproj */;
+				},
+				{
+					ProductGroup = 454BE29B1D269B6E00E07AFE /* Products */;
+					ProjectRef = D845564130F54529B24487C7 /* CodePush.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -563,6 +582,13 @@
 			fileType = archive.ar;
 			path = libRNAdMobManager.a;
 			remoteRef = 452ADCD01D25C14F001E65CB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		454BE2A01D269B6E00E07AFE /* libCodePush.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCodePush.a;
+			remoteRef = 454BE29F1D269B6E00E07AFE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { RefreshControl, ListView, StyleSheet } from 'react-native';
+import { View, Text, RefreshControl, ListView, StyleSheet } from 'react-native';
 import geolib from "geolib";
 import Cell from "./Cell";
 
@@ -19,14 +19,28 @@ class TableView extends Component {
         });
     }
     render() {
+        if (!this.props.places || this.props.places.length > 0) {
+            return (
+                <ListView
+                    style={styles.listView}
+                    dataSource={this.state.dataSource}
+                    renderRow={this._renderRow.bind(this)}
+                    refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh.bind(this)} />}
+                />
+            )
+        } else {
+            return (
+                <View>
+                    <Text>Nating found</Text>
+                </View>
+            )
+        }
+        // refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh.bind(this)} />}
+    }
+    _renderRow(place) {
         return (
-            <ListView
-                style={styles.listView}
-                dataSource={this.state.dataSource}
-                renderRow={(place) => <Cell onPress={this.props.onCellPress} place={place} />}
-                refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh.bind(this)} />}
-            />
-        )
+            <Cell onPress={this.props.onCellPress} place={place} />
+        );
     }
     _onRefresh() {
         this.setState({refreshing: true});

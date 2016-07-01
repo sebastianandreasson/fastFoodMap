@@ -5,7 +5,6 @@ module.exports = {
         switch (imageName) {
             case "burgerking":
                 return require("../images/burgerkingIcon.png");
-                break;
             case "carlsjr":
                 return require("../images/carlsjrIcon.png");
             case "chipotlemexicangrill":
@@ -18,13 +17,23 @@ module.exports = {
                 return require("../images/pandaexpressIcon.png");
             case "macdonalds":
             case "mcdonalds":
-                return require("../images/macdonaldsIcon.png");
+                return require("../images/mcdonaldsIcon.png");
             case "subway":
                 return require("../images/subwayIcon.png");
             case "superduperburger":
                 return require("../images/superduperburgerIcon.png");
             case "tacobell":
                 return require("../images/tacobellIcon.png");
+            case "dominospizza":
+                return require("../images/dominospizzaIcon.png");
+            case "maxhamburgare":
+                return require("../images/maxhamburgareIcon.png");
+            case "pizzahut":
+                return require("../images/pizzahutIcon.png");
+            case "sibylla":
+                return require("../images/sibyllaIcon.png");
+            case "wendys":
+                return require("../images/wendysIcon.png");
             default:
                 return require("../images/defaultIcon.png");
         }
