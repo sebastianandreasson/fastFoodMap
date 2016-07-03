@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { AdMobBanner } from 'react-native-admob'
 import { imageForName } from "../static/methods";
+import { Analytics, Hits as GAHits } from 'react-native-google-analytics';
+import DeviceInfo from 'react-native-device-info';
 
 import ViewContainer from "../components/ViewContainer";
 import ScrollViewContainer from "../components/ScrollViewContainer";
@@ -34,6 +36,16 @@ class MapScreen extends Component {
         }
     }
     componentWillMount() {
+        // console.log(DeviceInfo.getUniqueID());
+        // let clientId = DeviceInfo.getUniqueID();
+        // ga = new Analytics("UA-80184084-1", clientId, 1, DeviceInfo.getUserAgent());
+        // var screenView = new GAHits.ScreenView(
+        //     "FastFoodMap",
+        //     "Map Screen",
+        //     DeviceInfo.getReadableVersion(),
+        //     DeviceInfo.getBundleId()
+        // );
+        // ga.send(screenView);
     }
     componentDidMount() {
         this._getCurrentPosition();

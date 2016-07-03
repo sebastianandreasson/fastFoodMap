@@ -9,33 +9,26 @@ class TableView extends Component {
         var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
         this.state = {
             dataSource: ds.cloneWithRows(props.places),
-            refreshing: false,
+            refreshing: true,
         }
     }
     componentWillReceiveProps(props) {
         var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
         this.setState({
             dataSource: ds.cloneWithRows(props.places),
+            refreshing: false,
         });
     }
     render() {
-        if (!this.props.places || this.props.places.length > 0) {
-            return (
-                <ListView
-                    style={styles.listView}
-                    dataSource={this.state.dataSource}
-                    renderRow={this._renderRow.bind(this)}
-                    refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh.bind(this)} />}
-                />
-            )
-        } else {
-            return (
-                <View>
-                    <Text>Nating found</Text>
-                </View>
-            )
-        }
-        // refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh.bind(this)} />}
+        return (
+            <ListView
+                style={styles.listView}
+                dataSource={this.state.dataSource}
+                renderRow={this._renderRow.bind(this)}
+                enableEmptySections={true}
+                refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh.bind(this)} />}
+            />
+        )
     }
     _renderRow(place) {
         return (
@@ -77,6 +70,9 @@ const styles = StyleSheet.create({
     listItemSubTitle: {
         marginLeft: 10,
         fontSize: 11
+    },
+    spinner: {
+
     }
 });
 
