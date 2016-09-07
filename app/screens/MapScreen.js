@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { AdMobBanner } from 'react-native-admob'
-import { imageForName } from "../static/methods";
-import { Analytics, Hits as GAHits } from 'react-native-google-analytics';
-import DeviceInfo from 'react-native-device-info';
+import React, { Component } from "react";
+import { StyleSheet, View, Text } from "react-native";
+import { AdMobBanner } from "react-native-admob"
+import { imageForName, androidImageForName } from "../static/methods";
+import DeviceInfo from "react-native-device-info";
 
 import ViewContainer from "../components/ViewContainer";
 import ScrollViewContainer from "../components/ScrollViewContainer";
@@ -14,7 +13,6 @@ import TableView from  "../components/TableView";
 import geolib from "geolib";
 import Map from "../components/Map";
 
-const gaKey = "AIzaSyANHmJt78yKqJMrkvj71tMaASDhPmwQ-aY";
 const keyword = "fastfood";
 
 class MapScreen extends Component {
@@ -34,18 +32,6 @@ class MapScreen extends Component {
             places: [],
             annotations: [],
         }
-    }
-    componentWillMount() {
-        // console.log(DeviceInfo.getUniqueID());
-        // let clientId = DeviceInfo.getUniqueID();
-        // ga = new Analytics("UA-80184084-1", clientId, 1, DeviceInfo.getUserAgent());
-        // var screenView = new GAHits.ScreenView(
-        //     "FastFoodMap",
-        //     "Map Screen",
-        //     DeviceInfo.getReadableVersion(),
-        //     DeviceInfo.getBundleId()
-        // );
-        // ga.send(screenView);
     }
     componentDidMount() {
         this._getCurrentPosition();
@@ -118,6 +104,12 @@ class MapScreen extends Component {
                     title: place.name,
                     animateDrop: true,
                     image: imageForName(place.name),
+                    distance: geolib.getDistance(position.coords,
+                    {
+                        longitude: place.geometry.location.lng,
+                        latitude: place.geometry.location.lat,
+                    }),
+                    androidImage: androidImageForName(place.name),
                 };
             }),
         });

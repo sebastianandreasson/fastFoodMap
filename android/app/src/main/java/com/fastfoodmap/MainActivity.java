@@ -1,6 +1,7 @@
 package com.fastfoodmap;
 
 import com.facebook.react.ReactActivity;
+import com.mapbox.reactnativemapboxgl.ReactNativeMapboxGLPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.microsoft.codepush.react.CodePush;
 import com.sbugert.rnadmob.RNAdMobPackage;
@@ -39,6 +40,7 @@ public class MainActivity extends ReactActivity {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new ReactNativeMapboxGLPackage(),
             new RNDeviceInfo(),
             new CodePush(this.getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), this, BuildConfig.DEBUG),
             new RNAdMobPackage(),

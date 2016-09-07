@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import React, { Component } from "react";
+import { ScrollView, StyleSheet } from "react-native";
 
 class ScrollViewContainer extends Component {
     render () {

@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
-import { TouchableOpacity, Image, View, Text, StyleSheet } from 'react-native';
+import React, { Component } from "react";
+import { TouchableOpacity, Image, View, Text, StyleSheet } from "react-native";
 import { imageForName } from "../static/methods";
 
 class Cell extends Component {
     render () {
         const place = this.props.place;
         const image = imageForName(place.name);
-        const address = place.vicinity.substr(0, place.vicinity.indexOf(','));
+        const address = place.vicinity.substr(0, place.vicinity.indexOf(","));
         const isOpen = (place.opening_hours && place.opening_hours.open_now);
-        console.log(place);
         return (
             <TouchableOpacity style={styles.root} onPress={this.props.onPress.bind(this, place)}>
                 <View style={styles.cell}>

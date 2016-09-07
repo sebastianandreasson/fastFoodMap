@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View, Text, RefreshControl, ListView, StyleSheet } from 'react-native';
+import React, { Component } from "react";
+import { View, Text, RefreshControl, ListView, StyleSheet } from "react-native";
 import geolib from "geolib";
 import Cell from "./Cell";
 

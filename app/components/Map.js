@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import React, { Component } from "react";
+import { View, StyleSheet } from "react-native";
 import ViewContainer from "./ViewContainer";
-import MapView from "react-native-maps";
+// import MapView from "react-native-maps";
+import Mapbox from "react-native-mapbox-gl";
 
 class Map extends Component {
     constructor(props) {
@@ -12,23 +13,36 @@ class Map extends Component {
         }
     }
     render() {
+        // iOS vs Android Map
+        // return (
+        //     <View style={styles.root}>
+        //         <MapView
+        //          style={styles.map}
+        //          region={this.state.region}
+        //          showsUserLocation={true}
+        //          showsPointsOfInterest={false}
+        //          onRegionChange={this._onRegionChange.bind(this)}
+        //         >
+        //         {this.props.annotations.map((o, i) => {
+        //             o.key = i;
+        //             return (
+        //                 <MapView.Marker {...o} />
+        //             )
+        //         })}
+        //         </MapView>
+        //     </View>
+        // )
         return (
-            <View style={styles.root}>
-                <MapView
-                 style={styles.map}
-                 region={this.state.region}
-                 showsUserLocation={true}
-                 showsPointsOfInterest={false}
-                 onRegionChange={this._onRegionChange.bind(this)}
-                >
-                {this.props.annotations.map((o, i) => {
-                    o.key = i;
-                    return (
-                        <MapView.Marker {...o} />
-                    )
-                })}
-                </MapView>
-            </View>
+            <Mapbox
+             style={{ flex: 1 }}
+             accessToken={"pk.eyJ1Ijoic2ViYXN0aWFuYW5kcmVhcyIsImEiOiJjaXE4ZXhkdWIwMDNjaHNrcXluaXRsNW1nIn0.r_jwvoIB4WKf6NO0031--w"}
+             centerCoordinate={this.state.region}
+             zoomLevel={14}
+             showsUserLocation={true}
+             logoIsHidden={true}
+             annotations={this.props.annotations.map((o) => this._mapAnnotations(o))}>
+
+            </Mapbox>
         )
     }
     componentWillReceiveProps(props) {
@@ -36,7 +50,19 @@ class Map extends Component {
     }
     _onRegionChange(region) {
         this.setState({ region });
-        // console.log(e)
+    }
+    _mapAnnotations(o) {
+        const subtitle = o.distance + " m away.";
+        return {
+            type: "point",
+            coordinates: [o.coordinate.latitude, o.coordinate.longitude],
+            title: o.title,
+            subtitle,
+            annotationImage: {
+                url: o.androidImage,
+                width: 30,
+            }
+        }
     }
 }
 

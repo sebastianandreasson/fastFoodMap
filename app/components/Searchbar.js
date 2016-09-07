@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import React, { Component } from "react";
+import { View, TextInput, StyleSheet } from "react-native";
 
 class Searchbar extends Component {
     render () {
